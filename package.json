@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx tsc && npx copyfiles -u 1 \"src/protos/**/*\" dist",
+    "prestart": "npm run build",
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts"
   },
@@ -21,8 +22,10 @@
     "@grpc/grpc-js": "^1.10.6",
     "@grpc/proto-loader": "^0.7.12",
     "@types/jsonwebtoken": "^9.0.6",
+    "copyfiles": "^2.4.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "glob": "^10.4.1",
     "jsonwebtoken": "^9.0.2"
   }
 }
